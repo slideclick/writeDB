@@ -6,7 +6,7 @@ import datetime
 import csv
 
 
-url='http://home.sina.com.cn'
+url="http://www.sohu.com/" #'http://home.sina.com.cn' 55118885
 headers = requests.utils.default_headers()
 headers.update(
     {
@@ -18,14 +18,22 @@ result = requests.get(url, headers=headers)
 html = result.text
 #print(html)
 with open(r'sina.html','w',encoding='utf-8') as csvFile:
-    print(html,file=csvFile,end='')
+    print(html,file=csvFile,end='')#这里存为文件，应该可以用npp和IE打开，而不是乱码。其hex进制值就是下面的urlopen.read()
 tree=lxml.html.fromstring(html)
-print (tree.find(".//title").text.encode('cp936',errors='xmlcharrefreplace').decode('cp936'))
+print (tree.find(".//title").text)
+print (tree.find(".//title").text.encode('utf-8',errors='xmlcharrefreplace').decode('utf-8'))
 #'surrogateescape'
 
-import requests
+
 from bs4 import BeautifulSoup as soup
 result = requests.get(url)
 page = result.text
 doc = soup(page)
+print (doc.title.string)
 print (doc.title.string.encode('gbk',errors='replace').decode('cp936'))
+
+
+from urllib.request import urlopen
+textPage = urlopen(             url)
+print(textPage.read())  #bytes you can see the utf-8 value 
+

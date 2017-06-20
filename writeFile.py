@@ -6,7 +6,7 @@ import datetime
 import csv
 
 
-url="http://www.sohu.com/" #'http://home.sina.com.cn' 55118885
+url="http://home.sina.com.cn/" #'http://home.sina.com.cn' 55118885  www.sohu.com
 headers = requests.utils.default_headers()
 headers.update(
     {

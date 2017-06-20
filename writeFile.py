@@ -28,12 +28,12 @@ print (tree.find(".//title").text.encode('utf-8',errors='xmlcharrefreplace').dec
 from bs4 import BeautifulSoup as soup
 result = requests.get(url)
 page = result.text
-doc = soup(page)
+doc = soup(page,"lxml")
 print (doc.title.string)
 print (doc.title.string.encode('gbk',errors='replace').decode('cp936'))
 
 
 from urllib.request import urlopen
 textPage = urlopen(             url)
-print(textPage.read())  #bytes you can see the utf-8 value 
+#print(textPage.read())  #bytes you can see the utf-8 value 
 

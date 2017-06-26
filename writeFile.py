@@ -15,7 +15,7 @@ headers.update(
 )#http://stackoverflow.com/questions/10606133/sending-user-agent-using-requests-library-in-python
 
 result = requests.get(url, headers=headers)
-html = result.text
+html = result.text # content会是raw字节，这时对它decode可以是中文
 #print(html)
 with open(r'sina.html','w',encoding='utf-8') as csvFile:
     print(html,file=csvFile,end='')#这里存为文件，应该可以用npp和IE打开，而不是乱码。其hex进制值就是下面的urlopen.read()
